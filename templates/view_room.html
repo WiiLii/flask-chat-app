@@ -2,32 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Chat App</title>
+    <title>Communication Helpdesk</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<h1>Welcome to chat room: {{ room.name }}</h1>
-
-
-<button type="button" id="load_older_messages_btn">Load Older Messages</button>
-<div id="messages">
-    {% for message in messages %}
-        <div><b>{{ message.sender }}&nbsp;[{{ message.created_at }}]:&nbsp;</b> {{ message.text }}</div>
-    {% endfor %}
+<div class="container">
+    <div class="row">
+        <h1>{{ room.name }}</h1>
+    </div>
+    <div class="row">
+        <h3>Members</h3>
+        <ul>
+            {% for member in room_members %}
+                <li>{{ member._id.username }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div id="messages">
+        {% for message in messages %}
+            <div><b>{{ message.sender }}&nbsp;[{{ message.created_at }}]:&nbsp;</b> {{ message.text }}</div>
+        {% endfor %}
+    </div>
+<div class="row">
+    <form id="message_input_form">
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="message_input" placeholder="Enter your message here">
+                <div class="input-group-append">
+                    <button type="button submit" class="btn btn-secondary">Send</button>
+                </div>
+        </div>
+    </form>
 </div>
-
-<form id="message_input_form">
-    <input type="text" id="message_input" placeholder="Enter your message here">
-    <button type="submit">Send</button>
-</form>
-
-<h3>Members</h3>
-<ul>
-    {% for member in room_members %}
-        <li>{{ member._id.username }}</li>
-    {% endfor %}
-</ul>
-
-
+<div class="row">
+    <button type="button" class="btn btn-info" id="load_older_messages_btn">Load Older Messages</button>
+</div>
+</div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 <script>
