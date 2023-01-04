@@ -20,9 +20,10 @@ login_manager.init_app(app)
 @app.route('/')
 def home():
     rooms = []
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         rooms = get_rooms_for_user(current_user.username)
-    return render_template("index.html", rooms=rooms)
+        return render_template("index.html", rooms=rooms)
+    return render_template("login.html", rooms=rooms)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -51,7 +52,7 @@ def signup():
 
     message = ''
     if request.method == 'POST':
-        username = request.form.get('username')
+        username = request.form.get('username').lower()
         email = request.form.get('email')
         password = request.form.get('password')
         try:
