@@ -2,3 +2,5 @@ venv/
 .idea/
 .ipynb_checkpoints/
 __pycache__/
+warm-anchorage-38137/
+.vscode/settings.json
