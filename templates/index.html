@@ -17,6 +17,7 @@
             <li class="list-group-item"><a href="/rooms/{{ room._id.room_id }}">{{ room.room_name }}</a></li>
         {% endfor %}
     </ul>
+    <a href="{{ url_for('create_room') }}">Create room</a>
 {% endif %}
 </div>
 </body>
