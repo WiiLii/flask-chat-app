@@ -59,7 +59,7 @@ def signup():
             save_user(username, email, password)
             return redirect(url_for('login'))
         except DuplicateKeyError:
-            message = "User already exists!"
+            message = "Username taken!"
     return render_template('signup.html', message=message)
 
 
