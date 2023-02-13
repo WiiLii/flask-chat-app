@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Communication Helpdesk</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" media="screen" type= "text/css" href="{{ url_for('static', filename='styles/chat.css') }}">
 </head>
 <body>
 <div class="container">
@@ -23,7 +24,26 @@
     </div>
     <div id="messages">
         {% for message in messages %}
-            <div><b>{{ message.sender }}&nbsp;[{{ message.created_at }}]:&nbsp;</b> {{ message.text }}</div>
+            <div class="bubbleWrapper">
+                {% if message.sender == username %}
+                    <div class="inlineContainer own">
+                        <div class="ownBubble own">
+                            {{ message.text }}
+                        </div>
+                    </div>
+                    <span class="own">{{ message.created_at }}</span>
+
+                {% else %}
+
+                    <div class="inlineContainer">
+                        <div class="otherBubble other">
+                            {{ message.text }}
+                        </div>
+                    </div>
+                    <span class="other">{{ message.created_at }}</span>
+
+                {% endif %}
+            </div>
         {% endfor %}
     </div>
     <div class="row">
