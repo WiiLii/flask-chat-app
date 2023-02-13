@@ -12,12 +12,13 @@
 
 {% if current_user.is_authenticated %}
     <h3>Chatrooms</h3>
+    <a href="{{ url_for('create_room') }}">Create room</a><br>
     <ul class="list-group">
         {% for room in rooms %}
             <li class="list-group-item"><a href="/rooms/{{ room._id.room_id }}">{{ room.room_name }}</a></li>
         {% endfor %}
     </ul>
-    <a href="{{ url_for('create_room') }}">Create room</a>
+    <a href="{{ url_for('logout') }}">Log out</a>
 {% endif %}
 </div>
 </body>
