@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <title>Communication Helpdesk</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" media="screen" type= "text/css" href="{{ url_for('static', filename='styles/login.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Create Room</h1>
-        <h3>{{ message }}</h3>
         <form method="post">
+            <h3>Create Room</h3>
             <label>Room Name:</label>
-            <input type="text" name="room_name">
-            <br>
+            <input type="text" name="room_name" placeholder="10 January Meeting">
             <label>Members:</label>
-            <input type="text" name="members">
-            <br>
-            <button type="button submit" class="btn btn-success">Create Room</button>
+            <input type="text" name="members" placeholder="Tutor01,Tutee01">
+            <button type="button submit" class="btn btn-secondary" id="create-btn">Create Room</button>
+            <p><a href="{{ url_for('home') }}">Back to chats</a></p>
+            <h3>{{ message }}</h3>
         </form>
     </div>
 </body>

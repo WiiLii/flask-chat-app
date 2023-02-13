@@ -68,7 +68,7 @@
     ::placeholder{
         color: #777777;
     }
-    #login-btn {
+    #login-btn, #create-btn {
         margin-top: 20px;
         width: 100%;
         background-color: #ffffff;
