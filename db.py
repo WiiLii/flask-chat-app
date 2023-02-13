@@ -79,7 +79,7 @@ def save_message(room_id, text, sender):
     messages_collection.insert_one({'room_id': room_id, 'text': text, 'sender': sender, 'created_at': datetime.now()})
 
 
-MESSAGE_FETCH_LIMIT = 3
+MESSAGE_FETCH_LIMIT = 10
 
 
 def get_messages(room_id, page=0):
