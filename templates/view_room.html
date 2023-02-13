@@ -18,25 +18,24 @@
             {% endfor %}
         </ul>
     </div>
-    
+    <div class="row">
+        <button type="button" class="btn btn-info" id="load_older_messages_btn">Load Older Messages</button>
+    </div>
     <div id="messages">
         {% for message in messages %}
             <div><b>{{ message.sender }}&nbsp;[{{ message.created_at }}]:&nbsp;</b> {{ message.text }}</div>
         {% endfor %}
     </div>
-<div class="row">
-    <form id="message_input_form">
-        <div class="input-group input-group-lg">
-            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="message_input" placeholder="Enter your message here">
-                <div class="input-group-append">
-                    <button type="button submit" class="btn btn-secondary">Send</button>
-                </div>
-        </div>
-    </form>
-</div>
-<div class="row">
-    <button type="button" class="btn btn-info" id="load_older_messages_btn">Load Older Messages</button>
-</div>
+    <div class="row">
+        <form id="message_input_form">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="message_input" placeholder="Enter your message here">
+                    <div class="input-group-append">
+                        <button type="button submit" class="btn btn-secondary">Send</button>
+                    </div>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
